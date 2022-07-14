@@ -11,9 +11,14 @@ with open(f'model/model_pkl.pkl', 'rb') as f:
 
 app = flask.Flask(__name__, template_folder='templates')
 @app.route('/', methods=['GET', 'POST'])
+def home():
+    if flask.request.method == 'GET':
+       return(flask.render_template('home.html')) #homepage is loaded
+@app.route('/home', methods=['GET', 'POST'])
 def main():
     if flask.request.method == 'GET':
        return(flask.render_template('main.html')) #homepage is loaded
+
 
     if flask.request.method == 'POST':  #when we will click the submit button
         q1 = flask.request.form['q1']
